@@ -7,7 +7,7 @@
 -- CREATE SCHEMA Demo;
 -- GO
  DROP TABLE Demo.RepPerformance;
-
+       
 
 CREATE TABLE Demo.RepPerformance
 (
@@ -20,7 +20,7 @@ CREATE TABLE Demo.RepPerformance
 GO
 
 ALTER PROCEDURE Demo.uspUpdateRepPerformance
-	
+	@OrderYear INT
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -56,6 +56,8 @@ BEGIN
             ON EMP.BusinessEntityID = PER.BusinessEntityID
         LEFT JOIN Production.Product PRD 
             ON SOD.ProductID = PRD.ProductID
+        WHERE 
+            DATEPART(YEAR, SOH.OrderDate) =@OrderYear
     GROUP BY 
         SP.BusinessEntityID,
         DATEPART(YEAR, SOH.OrderDate);

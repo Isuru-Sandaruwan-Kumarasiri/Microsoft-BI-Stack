@@ -2,7 +2,7 @@
 -- so first we must truncate needed table that was located in procedure . SOLUTION : add this query into the procedure 
 
 
-EXEC Demo.uspUpdateRepPerformance
+EXEC Demo.uspUpdateRepPerformance 2012
 
 
 SELECT * FROM  Demo.RepPerformance
