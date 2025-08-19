@@ -3,6 +3,7 @@
 
 
 EXEC Demo.uspUpdateRepPerformance 2012
+-- when parameters are added to the procedure ,then we can pass the values to the  procedure 
 
 
 SELECT * FROM  Demo.RepPerformance
