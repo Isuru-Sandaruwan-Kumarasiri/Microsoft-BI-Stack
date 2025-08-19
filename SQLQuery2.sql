@@ -4,22 +4,42 @@
 -- Create date: 19-08-2025
 -- Description:	Tutorial Stored Procedure
 -- =============================================
-CREATE SCHEMA Demo;
+-- CREATE SCHEMA Demo;
+-- GO
+
+-- DROP TABLE Demo.RepPerformance;
+
+
+CREATE TABLE Demo.RepPerformance
+(
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    EmployeeID INT,
+    SalesQuantity INT,
+    SalesRevenue MONEY,
+    OrderYear INT
+);
 GO
 
-CREATE PROCEDURE Demo.uspUpdateRepPerformance
+ALTER PROCEDURE Demo.uspUpdateRepPerformance
 	
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
+	 SET NOCOUNT ON;
 
     -- Insert statements for procedure here
+     INSERT INTO Demo.RepPerformance
+     (
+        EmployeeID,
+        SalesQuantity,
+        SalesRevenue,
+        OrderYear
+     )
+
 	SELECT 
         SP.BusinessEntityID AS EmployeeID,
         SUM(SOD.OrderQty) AS SalesQuantity,
-        SUM(SOD.LineTotal) AS SalesRevenue,
         SUM(SOD.OrderQty * PRD.ListPrice) AS SalesRevenue2,
         DATEPART(YEAR, SOH.OrderDate) AS OrderYear
     FROM Sales.SalesOrderHeader SOH
