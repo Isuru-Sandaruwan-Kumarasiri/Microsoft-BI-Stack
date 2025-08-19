@@ -6,8 +6,7 @@
 -- =============================================
 -- CREATE SCHEMA Demo;
 -- GO
-
--- DROP TABLE Demo.RepPerformance;
+ DROP TABLE Demo.RepPerformance;
 
 
 CREATE TABLE Demo.RepPerformance
@@ -27,6 +26,10 @@ BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	 SET NOCOUNT ON;
+
+     --clear table
+
+     TRUNCATE TABLE Demo.RepPerformance
 
     -- Insert statements for procedure here
      INSERT INTO Demo.RepPerformance
