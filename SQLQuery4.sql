@@ -23,4 +23,20 @@
 SELECT 
 Demo.ufnGetFirstOrderDate()
 
+SELECT
+CAST(MIN(SOH.OrderDate) AS DATE)
+FROM 
+Sales.SalesOrderHeader SOH
+LEFT JOIN Sales.SalesOrderDetail SOD 
+            ON SOH.SalesOrderID = SOD.SalesOrderID
+LEFT JOIN Sales.SalesPerson SP 
+            ON SP.BusinessEntityID = SOH.SalesPersonID
+LEFT JOIN HumanResources.Employee EMP 
+            ON SP.BusinessEntityID = EMP.BusinessEntityID
+LEFT JOIN Person.Person PER 
+            ON PER.BusinessEntityID = EMP.BusinessEntityID
+WHERE SP.BusinessEntityID= 275
 
+
+SELECT 
+Demo.ufnGetFirstOrderDate(275)
